@@ -1,0 +1,55 @@
+﻿<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/dataTables.bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+
+<div class="container">
+    <table class="table table-responsive table-striped" id="Table_id">
+        <thead>
+            <tr class="bg-success">
+                <th>Id</th>
+                <th>First_Name</th>
+                <th>Middle_Name</th>
+                <th>Last_Name</th>
+                <th>Mobile_Number</th>
+                <th>Email_Address</th>
+                <th>Gender</th>
+                <th>Permanent_Address</th>
+            </tr>
+        </thead>
+
+        <tbody id="ListData">
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function () {
+     
+        Postdata();
+
+        function Postdata() {
+            var html = '';
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/GetDataSet",
+                data: JSON,
+                success: function (response) {
+                    $.each(response, function (key, item) {
+                        html += "<tr> <td>" + item.Id + "</td> <td>" + item.First_Name + "</td> <td>" + item.Middle_Name + "</td> <td>" + item.Last_Name + "</td> <td>" + item.Mobile_Number + "</td> <td>" + item.Email_Address + "</td> <td>" + item.Gender + "</td> <td>" + item.Permanent_Address + "</td> </tr>";
+                    });
+
+                    $("#ListData").append(html);
+
+                    $('#Table_id').DataTable();
+                }
+            
+            });
+        }
+    });
+
+</script>
