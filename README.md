@@ -1,2 +1,2 @@
 # MVC_CRUD-Application
- CRUD application using MVC .NET Frmework and Data retrieve using Ajax 
+ CRUD application using MVC .NET Framework and Data retrieve using Ajax 
